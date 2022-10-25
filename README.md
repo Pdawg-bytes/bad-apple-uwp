@@ -16,3 +16,9 @@ Download the zip from releases, install the certificate in the downloaded zip to
 
 # !!FLASH WARNING!!
 Just be sure, before downloading this app, that you have no signs of epilepsy or any other mental condition that can cause harm based on flashing content. Due to the way XAML works, and how the image is processed, this flashing cannot be mitigated, so please, be careful.
+
+# Screenshots
+![image](https://user-images.githubusercontent.com/83825746/197901719-336e92ff-1634-4012-a4e9-e1901d878ac8.png)
+![image](https://user-images.githubusercontent.com/83825746/197901752-f8184639-f3f6-4e21-b272-9676b7b6106f.png)
+![image](https://user-images.githubusercontent.com/83825746/197901857-ce2d87a3-8289-405d-86e0-f2e03d496edd.png)
+
