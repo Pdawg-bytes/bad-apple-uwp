@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="BadAppleUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BadAppleUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="osVersions" IsSourceGrouped="True" 
+                              ItemsPath="VersionCollection"/>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Bad Apple UWP" Margin="10,8,0,0" Width="160" HorizontalAlignment="Left"/>
+        <Rectangle Fill="Black" x:Name="ContentAreaBack" Height="320" Width="320" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid x:Name="ContentPixelGrid" Height="320" Width="320" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image x:Name="BadAppleFrame" Source="ms-appx:///Assets/Frames/001.bmp"/>
+        </Grid>
+        <ScrollViewer x:Name="BarScroller" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Enabled" Grid.Row="1">
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
+                <CommandBar Background="Transparent" DefaultLabelPosition="Right" HorizontalAlignment="Center" Grid.Row="1">
+                    <AppBarButton Icon="Play" Label="Play" x:Name="play" Click="play_Click"/>
+                    <AppBarButton Icon="Pause" Label="Pause" x:Name="pause" Click="pause_Click"/>
+                    <AppBarButton Icon="Redo" Label="Reset" x:Name="reset" Click="reset_Click"/>
+                    <AppBarSeparator/>
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton Label="About" x:Name="AboutButton"/>
+                    </CommandBar.SecondaryCommands>
+                </CommandBar>
+                <TextBlock Text="Frame Number" Margin="10,15,0,0" FontWeight="SemiLight" FontSize="14"/>
+                <muxc:NumberBox x:Name="FrameNumberBox" Grid.Row="1" Width="70" Margin="10,10,0,20" SpinButtonPlacementMode="Hidden" Value="1" Minimum="1"/>
+                <TextBlock Text="Volume" Margin="15,15,-10,0" FontWeight="SemiLight" FontSize="14"/>
+                <Slider x:Name="SongVolume" Grid.Row="1" Width="150" Margin="20,10,0,0" ValueChanged="SongVolume_ValueChanged"/>
+            </StackPanel>
+        </ScrollViewer>
+        <MediaElement x:Name="songPlayer"
+         AutoPlay="False" Volume="100" MediaEnded="songPlayer_MediaEnded"/>
+    </Grid>
+</Page>
