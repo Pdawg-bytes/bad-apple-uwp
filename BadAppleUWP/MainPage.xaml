@@ -29,11 +29,8 @@
                 <CommandBar Background="Transparent" DefaultLabelPosition="Right" HorizontalAlignment="Center" Grid.Row="1">
                     <AppBarButton Icon="Play" Label="Play" x:Name="play" Click="play_Click"/>
                     <AppBarButton Icon="Pause" Label="Pause" x:Name="pause" Click="pause_Click"/>
-                    <AppBarButton Icon="Redo" Label="Reset" x:Name="reset" Click="reset_Click"/>
                     <AppBarSeparator/>
-                    <CommandBar.SecondaryCommands>
-                        <AppBarButton Label="About" x:Name="AboutButton"/>
-                    </CommandBar.SecondaryCommands>
+                    <AppBarButton Icon="Redo" Label="Reset" x:Name="reset" Click="reset_Click"/>
                 </CommandBar>
                 <TextBlock Text="Frame Number" Margin="10,15,0,0" FontWeight="SemiLight" FontSize="14"/>
                 <muxc:NumberBox x:Name="FrameNumberBox" Grid.Row="1" Width="70" Margin="10,10,0,20" SpinButtonPlacementMode="Hidden" Value="1" Minimum="1"/>
