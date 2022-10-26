@@ -85,7 +85,6 @@ namespace BadAppleUWP
             // Sets frame source
             FrameImage = new BitmapImage(new Uri("ms-appx:///Assets/Frames/" + framei + ".jpg"));
             // Sets image source
-            BadAppleFrame.Source = FrameImage;
             // Adds to frame counter value
             FrameNumberBox.Value++;
         }
@@ -96,7 +95,6 @@ namespace BadAppleUWP
             Timer.Stop();
             framei = 0;
             FrameImage = new BitmapImage(new Uri("ms-appx:///Assets/Frames/1.jpg"));
-            BadAppleFrame.Source = FrameImage;
             FrameNumberBox.Value = 0;
             play.IsEnabled = true;
         }
@@ -107,7 +105,6 @@ namespace BadAppleUWP
             Timer.Stop();
             framei = 0;
             FrameImage = new BitmapImage(new Uri("ms-appx:///Assets/Frames/1.jpg"));
-            BadAppleFrame.Source = FrameImage;
             songPlayer.Position = new TimeSpan(0, 0, 0);
             Uri songUri = new Uri("ms-appx:///Assets/Sounds/bad_apple.mp3");
             FrameNumberBox.Value = 0;
