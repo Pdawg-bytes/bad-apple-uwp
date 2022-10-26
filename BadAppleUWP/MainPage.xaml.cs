@@ -109,9 +109,11 @@ namespace BadAppleUWP
             FrameImage = new BitmapImage(new Uri("ms-appx:///Assets/Frames/1.jpg"));
             BadAppleFrame.Source = FrameImage;
             songPlayer.Position = new TimeSpan(0, 0, 0);
+            Uri songUri = new Uri("ms-appx:///Assets/Sounds/bad_apple.mp3");
             FrameNumberBox.Value = 0;
             play.IsEnabled = false;
             Thread.Sleep(1);
+            songPlayer.Play();
             Timer.Start();
         }
     }
