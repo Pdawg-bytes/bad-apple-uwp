@@ -32,7 +32,6 @@ namespace BadAppleUWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        DispatcherTimer Timer = new DispatcherTimer();
         public MainPage()
         {
             this.InitializeComponent();
@@ -42,10 +41,6 @@ namespace BadAppleUWP
             songPlayer.Source = songUri;
             SongVolume.Value = 100;
             FrameNumberBox.IsEnabled = false;
-
-            //Init frame update
-            Timer.Tick += Timer_Tick;
-            Timer.Interval = TimeSpan.FromMilliseconds(44);
         }
 
         // Double to be used for volume control
@@ -55,7 +50,6 @@ namespace BadAppleUWP
         {
             // Pretty self explanitory
             songPlayer.Play();
-            Timer.Start();
             play.IsEnabled = false;
         }
 
@@ -63,7 +57,6 @@ namespace BadAppleUWP
         {
             // Pretty self explanitory
             songPlayer.Pause();
-            Timer.Stop();
             play.IsEnabled = true;
         }
 
@@ -74,27 +67,9 @@ namespace BadAppleUWP
             songPlayer.Volume = Math.Round(SongVolDouble, 2);
         }
 
-        // Creates image variable
-        public static BitmapImage FrameImage;
-        // Defines frame count
-        public static int framei;
-        private void Timer_Tick(object sender, object e)
-        {
-            // Adds 1 to move onto the next frame
-            framei++;
-            // Sets frame source
-            FrameImage = new BitmapImage(new Uri("ms-appx:///Assets/Frames/" + framei + ".jpg"));
-            // Sets image source
-            // Adds to frame counter value
-            FrameNumberBox.Value++;
-        }
-
         private void songPlayer_MediaEnded(object sender, RoutedEventArgs e)
         {
             // Pretty self explanitory
-            Timer.Stop();
-            framei = 0;
-            FrameImage = new BitmapImage(new Uri("ms-appx:///Assets/Frames/1.jpg"));
             FrameNumberBox.Value = 0;
             play.IsEnabled = true;
         }
@@ -102,16 +77,11 @@ namespace BadAppleUWP
         private void reset_Click(object sender, RoutedEventArgs e)
         {
             // Pretty self explanitory
-            Timer.Stop();
-            framei = 0;
-            FrameImage = new BitmapImage(new Uri("ms-appx:///Assets/Frames/1.jpg"));
             songPlayer.Position = new TimeSpan(0, 0, 0);
             Uri songUri = new Uri("ms-appx:///Assets/Sounds/bad_apple.mp3");
             FrameNumberBox.Value = 0;
             play.IsEnabled = false;
-            Thread.Sleep(1);
             songPlayer.Play();
-            Timer.Start();
         }
     }
 }
